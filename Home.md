@@ -9,6 +9,9 @@ Notes from various meetings can be found [here](./Meeting-Notes)
 * [Building Sebastian's Codes](./Working-Notes#SSummary)
 * [Converting transport files to compile with gnu](./Working-Notes#gnu_build)
 
+[Issues](./Issues) is a page to bring up current development issues that need resolution. After resolution they can be documented on the [Working Notes](./Working-Notes) page.
+
+[Fortran Wrapping Resources](./Fortran-Wrapping-Resources) includes links and resources for a number of wrapping options that have been explored. 
 
 ***
 Pyne Github branch for work: 
