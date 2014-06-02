@@ -1,1 +1,1 @@
-Welcome to the AHOT integration wiki. This is where the developers currently working with the integration of 2d- and 3d spatial solver modules in pyne can track meeting notes, outline a wrapping strategy, and post resources to one another in a version-controlled manner.    
+Welcome to the AHOT integration wiki. This is where the developers currently working with the integration of 2d- and 3d- spatial solver modules in pyne can track meeting notes, outline a wrapping strategy, and post resources to one another in a version-controlled manner.    
