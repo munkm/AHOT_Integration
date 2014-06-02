@@ -1,6 +1,7 @@
 ### Resources
 * [f2py](#f2py-Resources)
 * [fortran to c++](#c++wrap)
+* [fwrap](#fwrap)
 
 <a name="f2py-Resources"/>
 ### f2py Resources
@@ -55,4 +56,73 @@ CLAIM OR BY OMISSION.
 
 Cons: 
 would require linking (in make file) to be established between the fortran files and interfacing c files.
+
+***
+
+<a name="fwrap"/>
+### Fwrap
+Fortran wrapping library:
+
+Fwrap. located here:
+
+http://fortrancython.wordpress.com/ and here http://fwrap.sourceforge.net/
+
+Notes on building and using fwrap:
+
+VERY IMPORTANT: VERSION OF NUMPY INSTALLED MUST PREDATE 1.8.0! Support for numpy scons was removed as indicated by this pull request on numpy's github:
+
+  https://github.com/numpy/numpy/pull/2914
+ 
+fWrap is dependant on numpy.scons, a sub library used in numpy that was removed as of numpy version 1.8. In order to be able to use fWrap, you must have numpy 1.7.$ installed. Below is a link to a linux distribution of 1.7.0:
+ 
+  http://sourceforge.net/projects/numpy/files/NumPy/1.7.0/numpy-1.7.0.tar.gz/download
+ 
+Instructions:
+  1. type `pip uninstall numpy`
+  for some reason, if numpy is not manually removed, reinstalling with a lesser version will not overwright the binary. Theirfore, before installing the outdated version you must remove the new.
+     [if using anaconda: `conda remove numpy`]
+  2. install numpy 1.7.0 from source with:
+     `python setup.py install build`
+     (I did `python setup.py build --fcompiler=gnu95` to make sure it used gfortran)
+  3. install fWrap from source using directions below
+ 
+IMPORTANT:  Must install fwrap from NEW source.. not listed on blog.  Github repository has not been updated since 2010.
+    https://github.com/kwmsmith/fwrap/blob/master/INSTALL.txt
+  NEWER SOURCE (use this one): (updated in 2010)
+    https://bitbucket.org/kwmsmith/fwrap-dev
+
+(Note: if you installed Python with Anaconda, you might already have fwrap. Was this one built properly?)
+
+Installation instructions:
+
+1) get f2py from googlecode:
+```
+  $ hg clone https://f2py.googlecode.com/hg/ f2py
+  in the f2py folder:
+  $ ./setup.py build
+  $ ./setup.py install
+```
+  (not sure if these steps are needed or not?)
+
+2) get fwrap-dev
+```
+  $ hg clone https://bitbucket.org/kwmsmith/fwrap-dev
+```
+3) put a symbolic link from the f2py/fparser package in
+fwrap-dev/fwrap/ directory.
+```
+  $ cd /path/to/fwrap-dev/fwrap
+  $ ln -s /path/to/f2py/fparser 
+  $ cd ../ 
+  $ python setup.py install
+  $ python runtests.py -vv --fcompiler=gnu95 --no-cleanup 
+    (note: Rachel fails 7 tests)
+```
+4) add fwrapc to your path if you don't already have it
+
+
+Wrapping complie flags:
+  `fwrapc source.f90 --build --name=one_arg --fcompiler=gnu95 --f90exec=/usr/bin/gfortran-4.8 -L/usr/lib/gcc/x86_linux-gnu/4.8.2 -lgfortran`
+
+[for rachel: `fwrapc source.f90 --build --name=one_arg --fcompiler=gnu95 --f90exec=/usr/bin/gfortran-4.6 -L/usr/lib/gcc/x86_linux-gnu/4.6.3 -lgfortran`]
 
