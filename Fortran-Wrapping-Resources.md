@@ -1,3 +1,10 @@
+### Resources
+* [f2py](#f2py-Resources)
+* [fortran to c++](#c++wrap)
+
+<a name="f2py-Resources"/>
+### f2py Resources
+
 A few f2py resources that will be useful for wrapping: 
 
 - links to user's guide and an FAQ; the "Main Features" section is useful: [http://cens.ioc.ee/projects/f2py2e/](http://cens.ioc.ee/projects/f2py2e/)
@@ -19,3 +26,33 @@ Fernando refers to the reference that I've attached below (the link in his post 
 - scipy cookbook (not super useful): [http://wiki.scipy.org/Cookbook/F2Py](http://wiki.scipy.org/Cookbook/F2Py)
 
 - api documentation: [http://f2py.sourceforge.net/docs/](http://f2py.sourceforge.net/docs/)
+
+***
+<a name="c++wrap"/>
+### Wrapping with C++ 
+
+Option 1: Wrapping fortran with c++ via auto generation python script. 
+http://fortwrap.sourceforge.net/ 
+License: MIT
+
+Option 2: 
+http://wwwasd.web.cern.ch/wwwasd/cernlib/cfortran.html 
+
+License: 
+
+THIS PACKAGE, I.E. CFORTRAN.H, THIS DOCUMENT, AND THE CFORTRAN.H EXAMPLE 
+PROGRAMS ARE PROPERTY OF THE AUTHOR WHO RESERVES ALL RIGHTS. THIS PACKAGE AND 
+THE CODE IT PRODUCES MAY BE FREELY DISTRIBUTED WITHOUT FEES, SUBJECT TO THE 
+FOLLOWING RESTRICTIONS: 
+- YOU MUST ACCOMPANY ANY COPIES OR DISTRIBUTION WITH THIS (UNALTERED) NOTICE. 
+- YOU MAY NOT RECEIVE MONEY FOR THE DISTRIBUTION OR FOR ITS MEDIA 
+(E.G. TAPE, DISK, COMPUTER, PAPER.) 
+- YOU MAY NOT PREVENT OTHERS FROM COPYING IT FREELY. 
+- YOU MAY NOT DISTRIBUTE MODIFIED VERSIONS WITHOUT CLEARLY DOCUMENTING YOUR 
+CHANGES AND NOTIFYING THE AUTHOR. 
+- YOU MAY NOT MISREPRESENTED THE ORIGIN OF THIS SOFTWARE, EITHER BY EXPLICIT 
+CLAIM OR BY OMISSION. 
+
+Cons: 
+would require linking (in make file) to be established between the fortran files and interfacing c files.
+
